@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raja Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --slime-blue: #00a1e6;
+            --slime-light-blue: #92deff;
+            --slime-dark-blue: #005c99;
+            --slime-gold: #ffd700;
+            --slime-green: #4ade80;
+            --slime-purple: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at top, #0a192f 0%, #112240 50%, #0a192f 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 161, 230, 0.1);
+        }
+        
+        .btn-slime {
+            background: linear-gradient(135deg, var(--slime-blue), var(--slime-dark-blue));
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-slime::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-slime:hover::before {
+            left: 100%;
+        }
+        
+        .btn-slime:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 161, 230, 0.4);
+        }
+        
+        .slime-text-gradient {
+            background: linear-gradient(45deg, var(--slime-light-blue), var(--slime-blue), var(--slime-purple));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .card-slime-effect {
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-slime-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 161, 230, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card-slime-effect:hover::before {
+            opacity: 1;
+        }
+        
+        .card-slime-effect:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 161, 230, 0.3);
+            border: 1px solid var(--slime-blue);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .pulse-slime {
+            animation: pulseSlime 2s infinite;
+        }
+        
+        @keyframes pulseSlime {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(0, 161, 230, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 0 20px rgba(0, 161, 230, 0);
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(0, 161, 230, 0);
+                transform: scale(1);
+            }
+        }
+        
+        .slime-blob {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--slime-blue), var(--slime-light-blue));
+            opacity: 0.1;
+            animation: blobFloat 8s ease-in-out infinite;
+            filter: blur(20px);
+        }
+        
+        @keyframes blobFloat {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+            25% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+            50% { transform: translateY(-10px) translateX(-20px) scale(0.9); }
+            75% { transform: translateY(-40px) translateX(10px) scale(1.05); }
+        }
+        
+        .rimuru-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--slime-light-blue) 0%, var(--slime-blue) 100%);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rimuru-float 4s ease-in-out infinite;
+        }
+        
+        .rimuru-ornament::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 18px 0 0 white;
+        }
+        
+        .rimuru-ornament::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        @keyframes rimuru-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 161, 230, 0.2);
+            transition: all 0.4s ease;
+        }
+        
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--slime-blue), var(--slime-purple), var(--slime-green), var(--slime-blue));
+            background-size: 400% 400%;
+            border-radius: 22px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .photo-frame:hover {
+            transform: scale(1.05) rotateY(5deg);
+        }
+        
+        .slime-particle {
+            position: absolute;
+            background: var(--slime-light-blue);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 6s linear infinite;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--slime-blue), transparent);
+            margin: 40px 0;
+        }
+        
+        .hobby-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, #3b82f6, #9333ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            transition: all 0.4s ease;
+        }
+
+        .hobby-icon:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 10px 30px rgba(0, 161, 230, 0.5);
+        }
+        
+        .friend-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .friend-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(146, 222, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .friend-card:hover::before {
+            left: 100%;
+        }
+        
+        .friend-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 161, 230, 0.3);
+            border-color: var(--slime-blue);
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 161, 230, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .contact-card:hover::before {
+            opacity: 1;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 161, 230, 0.3);
+            border: 1px solid var(--slime-blue);
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, rgba(0, 161, 230, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(0, 161, 230, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(0, 161, 230, 0.2);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--slime-blue), var(--slime-purple));
+            box-shadow: 0 0 20px rgba(0, 161, 230, 0.5);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            width: 2px;
+            height: calc(100% - 16px);
+            background: linear-gradient(to bottom, var(--slime-blue), transparent);
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--slime-blue), var(--slime-purple));
+            border-radius: 4px;
+            transition: width 2s ease;
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div id="stars-container"></div>
+    
+    <!-- Slime Blob Decorations -->
+    <div class="slime-blob" style="top: 10%; left: 5%; width: 150px; height: 150px; animation-delay: 0s;"></div>
+    <div class="slime-blob" style="top: 60%; right: 10%; width: 200px; height: 200px; animation-delay: 2s;"></div>
+    <div class="slime-blob" style="bottom: 20%; left: 20%; width: 120px; height: 120px; animation-delay: 4s;"></div>
+
+    <!-- Rimuru Ornaments -->
+    <div class="rimuru-ornament" style="top: 15%; right: 15%; animation-delay: 1s;"></div>
+    <div class="rimuru-ornament" style="top: 70%; left: 8%; animation-delay: 3s;"></div>
+    <div class="rimuru-ornament" style="bottom: 15%; right: 20%; animation-delay: 5s;"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 pulse-slime relative">
+                    <div class="absolute top-2 left-2 w-3 h-3 bg-white rounded-full"></div>
+                    <div class="absolute top-2 right-2 w-3 h-3 bg-white rounded-full"></div>
+                    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-white rounded-full"></div>
+                </div>
+                <span class="ml-3 text-xl font-bold slime-text-gradient">RajaDev</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-blue-400 transition-colors relative group">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="achievements.html" class="nav-link hover:text-blue-400 transition-colors relative group">
+                    Achievements
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="ideas.html" class="nav-link hover:text-blue-400 transition-colors relative group">
+                    Ideas
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 pt-20" id="mobile-menu">
+        <div class="flex flex-col items-center space-y-10 text-xl">
+            <a href="#home" class="nav-link hover:text-blue-400 transition-colors py-2">Home</a>
+            <a href="achievements.html" class="nav-link hover:text-blue-400 transition-colors py-2">Achievements</a>
+            <a href="ideas.html" class="nav-link hover:text-blue-400 transition-colors py-2">Ideas</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <!-- Home/Profile Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center relative py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="animate__animated animate__fadeInLeft">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                            <span class="slime-text-gradient">Hello!</span> I'm <span class="slime-text-gradient">Raja</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-300 mb-8 animate__animated animate__fadeIn animate__delay-1s">
+                           Seorang web developer pemula yang masih ingin terus belajar dan berkembang 
+                        </p>
+                        <div class="flex flex-wrap gap-4 animate__animated animate__fadeInUp animate__delay-1s">
+                            <a href="achievements.html" class="btn-slime px-8 py-3 rounded-full text-white font-semibold">
+                                My Achievements
+                            </a>
+                            <a href="#contact" class="btn-slime px-8 py-3 rounded-full text-white font-semibold">
+                                Get In Touch
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative animate__animated animate__fadeInRight">
+                        <div class="floating photo-frame">
+                            <img src="photo/foto besar.jpg" alt="Raja's Profile Photo" class="w-full h-auto rounded-2xl">
+                        </div>
+                        <div class="absolute -top-10 -left-10 w-20 h-20 bg-blue-400 rounded-full opacity-20 pulse-slime"></div>
+                        <div class="absolute -bottom-10 -right-10 w-16 h-16 bg-purple-400 rounded-full opacity-30 floating"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-gray-900 bg-opacity-30 relative">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center slime-text-gradient">About Me</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 lg:order-1">
+                        <div class="card-slime-effect p-8 rounded-2xl">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-400">Who Am I?</h3>
+                            <p class="mb-6 text-gray-300 leading-relaxed">
+                                Gua awalnya hanyalah seorang pelajar yang salah masuk jurusan dan jujur aja itu buat gua males untuk berkembang, namun seiring berjalannya waktu gua jadi penasaran dan mulai belajar ngoding sedikit demi sedikit dan belajar kemampuan baru.
+                            </p>
+                            
+                            <!-- Core Skills -->
+                            <div class="mb-6">
+                                <h4 class="text-xl font-semibold mb-4 text-blue-300">My Core Skills</h4>
+                                <div class="grid grid-cols-2 gap-4">
+                                    
+                                    <!-- Web Development -->
+                                    <div class="card-slime-effect p-4 rounded-lg text-center">
+                                        <div class="hobby-icon mb-2">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4z" />
+                                                <path d="M4 8h16M8 4v4" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium text-sm text-white">Web Development</span>
+                                    </div>
+
+                                    <!-- Acting & Theater -->
+                                    <div class="card-slime-effect p-4 rounded-lg text-center">
+                                        <div class="hobby-icon mb-2">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M9 10a4 4 0 11-8 0V5a4 4 0 018 0v5zm14 0a4 4 0 11-8 0V5a4 4 0 018 0v5z" />
+                                                <path d="M5 16h14M5 20h14" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium text-sm text-white">Acting & Theater</span>
+                                    </div>
+
+                                    <!-- Penulis -->
+                                    <div class="card-slime-effect p-4 rounded-lg text-center">
+                                        <div class="hobby-icon mb-2">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 20h9" />
+                                                <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium text-sm text-white">Penulis</span>
+                                    </div>
+
+                                    <!-- Berpikir Kritis -->
+                                    <div class="card-slime-effect p-4 rounded-lg text-center">
+                                        <div class="hobby-icon mb-2">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2"
+                                                 viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M12 20h9" />
+                                                <path d="M9 12h6m-6 4h6m-6-8h6" />
+                                                <path d="M4 6h16M4 10h16M4 14h16M4 18h16" />
+                                            </svg>
+                                        </div>
+                                        <span class="font-medium text-sm text-white">Berpikir Kritis</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-4 py-2 bg-blue-900 bg-opacity-30 rounded-full text-blue-300 text-sm">Enthusiastic</span>
+                                <span class="px-4 py-2 bg-purple-900 bg-opacity-30 rounded-full text-purple-300 text-sm">Creative</span>
+                                <span class="px-4 py-2 bg-green-900 bg-opacity-30 rounded-full text-green-300 text-sm">Critical Thinker</span>
+                                <span class="px-4 py-2 bg-yellow-900 bg-opacity-30 rounded-full text-yellow-300 text-sm">Empathetic</span>
+                                <span class="px-4 py-2 bg-pink-900 bg-opacity-30 rounded-full text-pink-300 text-sm">Idealist</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2">
+                        <div class="photo-frame floating">
+                            <img src="photo/foto about.jpg" alt="Raja About Photo" class="w-full h-auto rounded-2xl">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Hobbies Section -->
+        <section class="py-20 relative">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center slime-text-gradient">My Hobbies</h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    
+                    <!-- Menonton -->
+                    <div class="card-slime-effect p-6 rounded-2xl text-center bg-slate-900 text-white">
+                        <div class="hobby-icon">
+                            <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="15" rx="2" ry="2" />
+                                <polyline points="17 2 12 7 7 2" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">Menonton</h3>
+                        <p class="text-gray-400 text-sm">Gua suka banget menonton entah itu menonton film, series, bahkan animasi atau anime sekalipun.</p>
+                    </div>
+
+                    <!-- Badminton -->
+                    <div class="card-slime-effect p-6 rounded-2xl text-center bg-slate-900 text-white">
+                        <div class="hobby-icon">
+                            <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 3L8.5 15.5M17 7L7 17M12 12L3 21" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">Badminton</h3>
+                        <p class="text-gray-400 text-sm">Gak terlalu sering sih tapi setidaknya gua selalu nyempatin diri bermain badminton.</p>
+                    </div>
+
+                    <!-- Membaca -->
+                    <div class="card-slime-effect p-6 rounded-2xl text-center bg-slate-900 text-white">
+                        <div class="hobby-icon">
+                            <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 7h8a2 2 0 0 1 2 2v10H4a2 2 0 0 1-2-2V7z" />
+                                <path d="M22 7h-8a2 2 0 0 0-2 2v10h8a2 2 0 0 0 2-2V7z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">Membaca</h3>
+                        <p class="text-gray-400 text-sm">Biasanya diwaktu luang gua selalu menyempatkan diri untuk membaca komik atau bahkan novel, dari membaca gua dapat banyak hal baru mengenai perspektif.</p>
+                    </div>
+
+                    <!-- Gaming -->
+                    <div class="card-slime-effect p-6 rounded-2xl text-center bg-slate-900 text-white">
+                        <div class="hobby-icon">
+                            <svg class="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6.5 6.5L4 12l2.5 5.5L12 18l5.5 1.5L20 12l-2.5-5.5L12 6l-5.5.5z" />
+                                <circle cx="9" cy="10" r="1" />
+                                <circle cx="15" cy="10" r="1" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mt-4 mb-2">Gaming</h3>
+                        <p class="text-gray-400 text-sm">Kalau ini semua cowok gua yakin pasti ada hobi ini, dan yup gua juga suka main game apalagi Tekken sama Devil May Cry.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Quote Section -->
+        <section class="py-20 relative">
+            <div class="max-w-4xl mx-auto px-6">
+                <div class="quote-card card-slime-effect p-12 rounded-2xl text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 slime-text-gradient leading-relaxed">
+                        "Coding itu bukan cuma tentang menulis kode, tapi tentang menyelesaikan masalah dan menciptakan solusi yang berguna untuk orang lain."
+                    </h3>
+                    <p class="text-gray-400">- Raja, Web Developer yang masih belajar</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900 bg-opacity-30 relative">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center slime-text-gradient">Get In Touch</h2>
+        
+        <div class="flex justify-center">
+            <!-- Contact Info - Centered -->
+            <div class="max-w-lg">
+                <div class="card-slime-effect p-8 rounded-2xl mb-8">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-400 text-center">Let's Connect!</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed text-center">
+                        Gua selalu terbuka untuk diskusi tentang web development, kolaborasi proyek, atau bahkan sekedar ngobrol tentang teknologi dan ide-ide baru. Jangan ragu untuk menghubungi gua!
+                    </p>
+                    
+                    <!-- Contact Cards -->
+                    <div class="space-y-4">
+                        <!-- Instagram -->
+                        <div class="contact-card p-4 rounded-xl flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                                    <path d="M12 7.046c-2.766 0-5 2.234-5 5s2.234 5 5 5 5-2.234 5-5-2.234-5-5-5zm0 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm7-7c0 .553-.447 1-1 1s-1-.447-1-1 .447-1 1-1 1 .447 1 1z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Instagram</h4>
+                                <a href="https://instagram.com/rj_slimeboy class"class="text-blue-400 hover:text-blue-300 transition-colors">@rj_slimeboy</a>
+                            </div>
+                        </div>
+
+                        <!-- WhatsApp -->
+                        <div class="contact-card p-4 rounded-xl flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">WhatsApp</h4>
+                                <a href="https://wa.me/6285272414944" class="text-blue-400 hover:text-blue-300 transition-colors">+62 852-7241-4944</a>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="contact-card p-4 rounded-xl flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">Email</h4>
+                                <a href="mailto:rajaibnoehartawan@email.com" class="text-blue-400 hover:text-blue-300 transition-colors">rajaibnoehartawan@email.com</a>
+                            </div>
+                        </div>
+
+                        <!-- GitHub -->
+                        <div class="contact-card p-4 rounded-xl flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold">GitHub</h4>
+                                <a href="https://github.com/raimtempest12-wq" class="text-blue-400 hover:text-blue-300 transition-colors">github.com/raimtempest12-wq</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+
+        <div class="section-divider"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 bg-opacity-70">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 animate-pulse"></div>
+                        <span class="ml-3 text-xl font-bold slime-text-gradient">RajaDev</span>
+                    </div>
+                    <p class="mt-4 text-gray-400 max-w-md">
+                       Web Developer pemula yang akan selalu belajar untuk meningkatkan kemampuan.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex space-x-6 mb-6">
+                        <a href="#home" class="text-gray-400 hover:text-blue-400 transition-colors">Home</a>
+                        <a href="#achievements" class="text-gray-400 hover:text-blue-400 transition-colors">My achievements</a>
+                        <a href="#ideas" class="text-gray-400 hover:text-blue-400 transition-colors">Ideas</a>
+                    </div>
+                    <div class="flex justify-center space-x-6">
+                        <a href="https://instagram.com/rj_slimeboy" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                                <path d="M12 7.046c-2.766 0-5 2.234-5 5s2.234 5 5 5 5-2.234 5-5-2.234-5-5-5zm0 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm7-7c0 .553-.447 1-1 1s-1-.447-1-1 .447-1 1-1 1 .447 1 1z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/6285272414944" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:rajaibnoehartawan@email.com" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/raimtempest12-wq" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>© 2025 SlimeboyDev. All rights reserved. Designed with my wife in Tempest Kingdom.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Create stars background
+        const starsContainer = document.getElementById('stars-container');
+        const starCount = 100;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random position
+            const size = Math.random() * 3;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const delay = Math.random() * 5;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        // Floating particles animation on mouse move
+        let particleTimeout;
+        document.addEventListener('mousemove', (e) => {
+            if (particleTimeout) return;
+            
+            particleTimeout = setTimeout(() => {
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.pointerEvents = 'none';
+                particle.style.left = `${e.clientX}px`;
+                particle.style.top = `${e.clientY}px`;
+                particle.style.width = '6px';
+                particle.style.height = '6px';
+                particle.style.background = 'linear-gradient(45deg, #00a1e6, #92deff)';
+                particle.style.borderRadius = '50%';
+                particle.style.opacity = '0.7';
+                particle.style.transition = 'all 1s ease-out';
+                particle.style.zIndex = '1000';
+                
+                document.body.appendChild(particle);
+                
+                // Animate particle
+                requestAnimationFrame(() => {
+                    const randomX = (Math.random() - 0.5) * 100;
+                    const randomY = (Math.random() - 0.5) * 100;
+                    
+                    particle.style.transform = `translate(${randomX}px, ${randomY}px) scale(0)`;
+                    particle.style.opacity = '0';
+                });
+                
+                // Remove particle
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000);
+                
+                particleTimeout = null;
+            }, 50);
+        });
+        
+        // Animate skill bars when in view
+        const observerOptions = {
+            threshold: 0.5
+        };
+        
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const skillBars = entry.target.querySelectorAll('.skill-progress');
+                    skillBars.forEach((bar, index) => {
+                        setTimeout(() => {
+                            bar.style.width = bar.style.width || '0%';
+                        }, index * 200);
+                    });
+                }
+            });
+        }, observerOptions);
+        
+        // Observe skills section
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+            skillObserver.observe(skillsSection);
+        }
+        
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(10, 25, 47, 0.98)';
+                navbar.style.backdropFilter = 'blur(20px)';
+            } else {
+                navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+                navbar.style.backdropFilter = 'blur(15px)';
+            }
+        });
+        
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(e.target);
+            const name = formData.get('name') || e.target.querySelector('input[placeholder="Your Name"]').value;
+            const email = formData.get('email') || e.target.querySelector('input[placeholder="your@email.com"]').value;
+            const subject = formData.get('subject') || e.target.querySelector('input[placeholder="What\'s this about?"]').value;
+            const message = formData.get('message') || e.target.querySelector('textarea').value;
+            
+            // Simple validation
+            if (!name || !email || !message) {
+                alert('Mohon isi semua field yang diperlukan!');
+                return;
+            }
+            
+            // Show success message
+            const button = e.target.querySelector('button[type="submit"]');
+            const originalText = button.textContent;
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            
+            // Simulate sending
+            setTimeout(() => {
+                alert('Pesan berhasil dikirim! Terima kasih sudah menghubungi saya.');
+                e.target.reset();
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 1500);
+        });
+        
+        // Add loading animation to buttons
+        document.querySelectorAll('.btn-slime').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.href && this.href.includes('#')) {
+                    return; // Skip for anchor links
+                }
+                
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Add ripple animation style
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            .btn-slime {
+                position: relative;
+                overflow: hidden;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Parallax effect for background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.slime-blob, .rimuru-ornament');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 + (index * 0.1);
+                const yPos = -(scrolled * speed);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+        
+        // Add hover sound effect (optional)
+        const addHoverSounds = () => {
+            const hoverElements = document.querySelectorAll('.card-slime-effect, .btn-slime, .contact-card');
+            
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    // You can add actual audio here if needed
+                    element.style.filter = 'brightness(1.1)';
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    element.style.filter = 'brightness(1)';
+                });
+            });
+        };
+        
+        // Initialize hover sounds
+        addHoverSounds();
+        
+        // Add intersection observer for animations
+        const animateOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        // Observe all cards for scroll animations
+        document.querySelectorAll('.card-slime-effect, .contact-card, .quote-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease-out';
+            animateOnScroll.observe(card);
+        });
+    </script>
+</body>
+</html>

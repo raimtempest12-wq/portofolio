@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raja Portfolio - My Achievements</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --slime-blue: #00a1e6;
+            --slime-light-blue: #92deff;
+            --slime-dark-blue: #005c99;
+            --slime-gold: #ffd700;
+            --slime-green: #4ade80;
+            --slime-purple: #8b5cf6;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(ellipse at top, #0a192f 0%, #112240 50%, #0a192f 100%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 161, 230, 0.1);
+        }
+        
+        .btn-slime {
+            background: linear-gradient(135deg, var(--slime-blue), var(--slime-dark-blue));
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-slime::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-slime:hover::before {
+            left: 100%;
+        }
+        
+        .btn-slime:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 161, 230, 0.4);
+        }
+        
+        .slime-text-gradient {
+            background: linear-gradient(45deg, var(--slime-light-blue), var(--slime-blue), var(--slime-purple));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .card-slime-effect {
+            transition: all 0.4s ease;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card-slime-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 161, 230, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .card-slime-effect:hover::before {
+            opacity: 1;
+        }
+        
+        .card-slime-effect:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 161, 230, 0.3);
+            border: 1px solid var(--slime-blue);
+        }
+        
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 161, 230, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .achievement-card:hover::before {
+            left: 100%;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 161, 230, 0.4);
+            border-color: var(--slime-blue);
+        }
+        
+        .skill-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--slime-blue), var(--slime-light-blue));
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: skillShine 2s infinite;
+        }
+        
+        @keyframes skillShine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .trophy-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--slime-gold), #ffa500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+        
+        .trophy-icon::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            background: linear-gradient(45deg, var(--slime-gold), transparent, var(--slime-gold));
+            border-radius: 50%;
+            z-index: -1;
+            animation: trophyGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes trophyGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(1deg); }
+            66% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        
+        .pulse-slime {
+            animation: pulseSlime 2s infinite;
+        }
+        
+        @keyframes pulseSlime {
+            0% { 
+                box-shadow: 0 0 0 0 rgba(0, 161, 230, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 0 20px rgba(0, 161, 230, 0);
+                transform: scale(1.05);
+            }
+            100% { 
+                box-shadow: 0 0 0 0 rgba(0, 161, 230, 0);
+                transform: scale(1);
+            }
+        }
+        
+        .slime-blob {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--slime-blue), var(--slime-light-blue));
+            opacity: 0.1;
+            animation: blobFloat 8s ease-in-out infinite;
+            filter: blur(20px);
+        }
+        
+        @keyframes blobFloat {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+            25% { transform: translateY(-30px) translateX(20px) scale(1.1); }
+            50% { transform: translateY(-10px) translateX(-20px) scale(0.9); }
+            75% { transform: translateY(-40px) translateX(10px) scale(1.05); }
+        }
+        
+        .rimuru-ornament {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, var(--slime-light-blue) 0%, var(--slime-blue) 100%);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: rimuru-float 4s ease-in-out infinite;
+        }
+        
+        .rimuru-ornament::before {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 18px 0 0 white;
+        }
+        
+        .rimuru-ornament::after {
+            content: '';
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 8px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        @keyframes rimuru-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        #stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--slime-blue), var(--slime-purple));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            background: var(--slime-blue);
+            border-radius: 50%;
+            border: 3px solid #0a192f;
+            box-shadow: 0 0 20px rgba(0, 161, 230, 0.6);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(0, 161, 230, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 161, 230, 0.05) 0%, transparent 70%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        
+        @keyframes heroGlow {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+        
+        .certificate-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--slime-green), #10b981);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .certificate-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(74, 222, 128, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Elements -->
+    <div id="stars-container"></div>
+    
+    <!-- Slime Blob Decorations -->
+    <div class="slime-blob" style="top: 10%; left: 5%; width: 150px; height: 150px; animation-delay: 0s;"></div>
+    <div class="slime-blob" style="top: 60%; right: 10%; width: 200px; height: 200px; animation-delay: 2s;"></div>
+    <div class="slime-blob" style="bottom: 20%; left: 20%; width: 120px; height: 120px; animation-delay: 4s;"></div>
+
+    <!-- Rimuru Ornaments -->
+    <div class="rimuru-ornament" style="top: 15%; right: 15%; animation-delay: 1s;"></div>
+    <div class="rimuru-ornament" style="top: 70%; left: 8%; animation-delay: 3s;"></div>
+    <div class="rimuru-ornament" style="bottom: 15%; right: 20%; animation-delay: 5s;"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 w-full z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 pulse-slime relative">
+                    <div class="absolute top-2 left-2 w-3 h-3 bg-white rounded-full"></div>
+                    <div class="absolute top-2 right-2 w-3 h-3 bg-white rounded-full"></div>
+                    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-white rounded-full"></div>
+                </div>
+                <span class="ml-3 text-xl font-bold slime-text-gradient">RajaDev</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link hover:text-blue-400 transition-colors relative group">
+                    Home
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#achievements" class="nav-link text-blue-400 relative">
+                    My Achievements
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400"></span>
+                </a>
+                <a href="ideas.html" class="nav-link hover:text-blue-400 transition-colors relative group">
+                    Ideas
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300"></span>
+                </a>
+            </div>
+            <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-40 pt-20" id="mobile-menu">
+        <div class="flex flex-col items-center space-y-10 text-xl">
+            <a href="index.html" class="nav-link hover:text-blue-400 transition-colors py-2">Home</a>
+            <a href="#achievements" class="nav-link text-blue-400 py-2">My Achievements</a>
+            <a href="ideas.html" class="nav-link hover:text-blue-400 transition-colors py-2">Ideas</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section class="py-20 relative">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="hero-section animate__animated animate__fadeInUp">
+                    <div class="trophy-icon floating">
+                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l1.09 3.26L16 2l-1.09 3.26L18 4l-3.26 1.09L16 8l-3.26-1.09L12 10l-1.09-3.26L8 8l1.09-3.26L6 4l3.26-1.09L8 2l1.09 3.26L12 2z"/>
+                            <path d="M7 15h2v6H7v-6zm4 0h2v6h-2v-6zm4 0h2v6h-2v-6z"/>
+                        </svg>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                        <span class="slime-text-gradient">My Achievements</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                        Perjalanan saya dalam dunia teknologi, kreativitas, dan pengembangan diri. Setiap pencapaian adalah langkah menuju versi terbaik dari diri saya.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="py-20 bg-gray-900 bg-opacity-30">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center slime-text-gradient">Technical Skills</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-slime-effect p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-8 text-blue-400">Programming Languages</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">HTML/CSS</span>
+                                    <span class="text-blue-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">JavaScript</span>
+                                    <span class="text-blue-400">50%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 50%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Python</span>
+                                    <span class="text-blue-400">40%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 40%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">PHP</span>
+                                    <span class="text-blue-400">70%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-slime-effect p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-8 text-purple-400">Creative Skills</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Writing</span>
+                                    <span class="text-purple-400">50%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 50%; background: linear-gradient(90deg, var(--slime-purple), #a855f7)"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Acting</span>
+                                    <span class="text-purple-400">90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%; background: linear-gradient(90deg, var(--slime-purple), #a855f7)"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Critical Thinking</span>
+                                    <span class="text-purple-400">85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%; background: linear-gradient(90deg, var(--slime-purple), #a855f7)"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="font-semibold">Problem Solving</span>
+                                    <span class="text-purple-400">75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%; background: linear-gradient(90deg, var(--slime-purple), #a855f7)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Major Achievements Section -->
+        <section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center slime-text-gradient">Major Achievements</h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="achievement-card">
+                        <div class="trophy-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7 19H5V5h2v14zm8-10h-4v2h4v-2zm0 4h-4v2h4v-2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Web Development Journey</h3>
+                        <p class="text-gray-300 text-center mb-4">Memulai perjalanan coding dari nol hingga bisa membuat website responsif dengan HTML, CSS, dan JavaScript.</p>
+                        <div class="text-center">
+                            <span class="certificate-badge">Self-Taught</span>
+                            <span class="certificate-badge">HTML/CSS</span>
+                            <span class="certificate-badge">PHP</span>
+                            <span class="certificate-badge">JavaScript</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="trophy-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Creative Writing</h3>
+                        <p class="text-gray-300 text-center mb-4">Mengembangkan kemampuan menulis kreatif dan analitis yang membantu dalam storytelling dan problem solving.</p>
+                        <div class="text-center">
+                            <span class="certificate-badge">Creative Writing</span>
+                            <span class="certificate-badge">Storytelling</span>
+                            <span class="certificate-badge">Analysis</span>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-card">
+                        <div class="trophy-icon">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-center">Personal Growth</h3>
+                        <p class="text-gray-300 text-center mb-4">Transformasi dari siswa yang merasa salah jurusan menjadi seseorang yang bersemangat belajar teknologi.</p>
+                        <div class="text-center">
+                            <span class="certificate-badge">Self-Motivation</span>
+                            <span class="certificate-badge">Growth Mindset</span>
+                            <span class="certificate-badge">Resilience</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-900 bg-opacity-30">
+            <div class="max-w-4xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center slime-text-gradient">Learning Journey</h2>
+                
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="card-slime-effect p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-2 text-blue-400">2022 - Self Discovery</h3>
+                            <p class="text-gray-300 mb-3">Masa transisi dari merasa salah jurusan menjadi menemukan passion di bidang teknologi dan kreativitas. Mulai eksplorasi berbagai bidang.</p>
+                            <span class="px-3 py-1 bg-green-900 bg-opacity-30 rounded-full text-green-300 text-sm">Self-Reflection</span>
+                                <span class="px-3 py-1 bg-green-900 bg-opacity-30 rounded-full text-green-300 text-sm">Exploration</span>
+                                <span class="px-3 py-1 bg-green-900 bg-opacity-30 rounded-full text-green-300 text-sm">Mindset Shift</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="card-slime-effect p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-2 text-purple-400">2023 - Creative Development</h3>
+                            <p class="text-gray-300 mb-3">Mengasah kemampuan writing dan acting, serta mulai mengembangkan critical thinking yang kuat melalui berbagai projek kreatif.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-purple-900 bg-opacity-30 rounded-full text-purple-300 text-sm">Creative Writing</span>
+                                <span class="px-3 py-1 bg-purple-900 bg-opacity-30 rounded-full text-purple-300 text-sm">Theater</span>
+                                <span class="px-3 py-1 bg-purple-900 bg-opacity-30 rounded-full text-purple-300 text-sm">Critical Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="card-slime-effect p-6 rounded-xl">
+                            <h3 class="text-xl font-bold mb-2 text-green-400">2024 - Web Development Start</h3>
+                            <p class="text-gray-300 mb-3">Memulai perjalanan coding dengan mempelajari HTML, CSS, dan dasar-dasar JavaScript. Membuat website portfolio pertama.</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-30 rounded-full text-blue-300 text-sm">HTML</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-30 rounded-full text-blue-300 text-sm">CSS</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-30 rounded-full text-blue-300 text-sm">JavaScript</span>
+                                <span class="px-3 py-1 bg-blue-900 bg-opacity-30 rounded-full text-blue-300 text-sm">PHP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Goals Section -->
+        
+<section class="py-20">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center slime-text-gradient">Future Goals</h2>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="card-slime-effect p-8 rounded-2xl text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Full Stack Developer</h3>
+                        <p class="text-gray-300">Menjadi full stack developer yang kompeten dengan menguasai frontend dan backend technologies.</p>
+                    </div>
+                    
+                    <div class="card-slime-effect p-8 rounded-2xl text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Actor Film</h3>
+                        <p class="text-gray-300">Menjadi actor yang tidak hanya jago beracting tetapi juga merasakan dan mengahayati peran yang dipilih.</p>
+                    </div>
+                    
+                    <div class="card-slime-effect p-8 rounded-2xl text-center">
+                        <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z M7 9l4 4-4 4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Content Creator</h3>
+                        <p class="text-gray-300">Menjadi content creator yang saling bertukar pikiran tentang perkembangan teknologi atau hanya sekedar membahasa film atau hiburan terkini.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates & Recognition Section -->
+        <section class="py-20 bg-gray-900 bg-opacity-30">
+            <div class="max-w-6xl mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 text-center slime-text-gradient">Certificates & Recognition</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-slime-effect p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-blue-400">Online Courses</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Web Development Fundamentals</h4>
+                                    <p class="text-sm text-gray-400">Self-Study Program</p>
+                                </div>
+                                <div class="text-green-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">JavaScript Basics</h4>
+                                    <p class="text-sm text-gray-400">Online Learning Platform</p>
+                                </div>
+                                <div class="text-green-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-30 rounded-lg opacity-60">
+                                <div>
+                                    <h4 class="font-semibold">Python Programming</h4>
+                                    <p class="text-sm text-gray-400">In Progress</p>
+                                </div>
+                                <div class="text-yellow-400">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-slime-effect p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold mb-6 text-purple-400">Soft Skills</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Critical Thinking</h4>
+                                    <p class="text-sm text-gray-400">Self-Developed Skill</p>
+                                </div>
+                                <div class="text-green-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Creative Writing</h4>
+                                    <p class="text-sm text-gray-400">Personal Projects</p>
+                                </div>
+                                <div class="text-green-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between p-4 bg-gray-800 bg-opacity-50 rounded-lg">
+                                <div>
+                                    <h4 class="font-semibold">Problem Solving</h4>
+                                    <p class="text-sm text-gray-400">Continuous Practice</p>
+                                </div>
+                                <div class="text-green-400">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 bg-opacity-70">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 animate-pulse"></div>
+                        <span class="ml-3 text-xl font-bold slime-text-gradient">RajaDev</span>
+                    </div>
+                    <p class="mt-4 text-gray-400 max-w-md">
+                       Web Developer pemula yang akan selalu belajar untuk meningkatkan kemampuan.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex space-x-6 mb-6">
+                        <a href="#home" class="text-gray-400 hover:text-blue-400 transition-colors">Home</a>
+                        <a href="#achievements" class="text-gray-400 hover:text-blue-400 transition-colors">My achievements</a>
+                        <a href="#ideas" class="text-gray-400 hover:text-blue-400 transition-colors">Ideas</a>
+                    </div>
+                    <div class="flex justify-center space-x-6">
+                        <a href="https://instagram.com/rj_slimeboy" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                                <path d="M12 7.046c-2.766 0-5 2.234-5 5s2.234 5 5 5 5-2.234 5-5-2.234-5-5-5zm0 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm7-7c0 .553-.447 1-1 1s-1-.447-1-1 .447-1 1-1 1 .447 1 1z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/6285272414944" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488z"/>
+                            </svg>
+                        </a>
+                        <a href="mailto:rajaibnoehartawan@email.com" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/raimtempest12-wq" class="text-gray-400 hover:text-blue-400 transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                <p>© 2025 SlimeboyDev. All rights reserved. Designed with my wife in Tempest Kingdom.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Create stars background
+        const starsContainer = document.getElementById('stars-container');
+        const starCount = 100;
+        
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random position
+            const size = Math.random() * 3;
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const delay = Math.random() * 5;
+            
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.animationDelay = `${delay}s`;
+            
+            starsContainer.appendChild(star);
+        }
+        
+        // Skill progress animation on scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progressBar = entry.target;
+                    const targetWidth = progressBar.style.width;
+                    progressBar.style.width = '0%';
+                    
+                    setTimeout(() => {
+                        progressBar.style.transition = 'width 2s ease-in-out';
+                        progressBar.style.width = targetWidth;
+                    }, 200);
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        skillBars.forEach(bar => observer.observe(bar));
+        
+        // Add floating particles on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() < 0.1) { // 10% chance to create particle
+                const particle = document.createElement('div');
+                particle.style.position = 'fixed';
+                particle.style.left = e.clientX + 'px';
+                particle.style.top = e.clientY + 'px';
+                particle.style.width = '4px';
+                particle.style.height = '4px';
+                particle.style.background = 'var(--slime-light-blue)';
+                particle.style.borderRadius = '50%';
+                particle.style.pointerEvents = 'none';
+                particle.style.zIndex = '1000';
+                particle.style.opacity = '0.8';
+                
+                document.body.appendChild(particle);
+                
+                // Animate particle
+                const randomX = (Math.random() - 0.5) * 100;
+                const randomY = (Math.random() - 0.5) * 100;
+                
+                particle.animate([
+                    { transform: 'translate(0, 0) scale(1)', opacity: 0.8 },
+                    { transform: `translate(${randomX}px, ${randomY}px) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 1000,
+                    easing: 'ease-out'
+                }).onfinish = () => particle.remove();
+            }
+        });
+        
+        // Achievement cards entrance animation
+        const achievementCards = document.querySelectorAll('.achievement-card');
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        achievementCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            cardObserver.observe(card);
+        });
+    </script>
+</body>
+</html>

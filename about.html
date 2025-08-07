@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me - [Nama Kamu]</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rimuru-blue: #68c9ff;
+      --rimuru-dark: #1e2a38;
+      --rimuru-glow: #00cfff;
+      --rimuru-light: #e6f7ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--rimuru-dark);
+      color: white;
+    }
+
+    nav {
+      background: #14202e;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav a {
+      color: var(--rimuru-blue);
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 0;
+      background: var(--rimuru-glow);
+      transition: 0.3s;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      font-size: 36px;
+      color: var(--rimuru-blue);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .about-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 207, 255, 0.2);
+      line-height: 1.8;
+    }
+
+    .about-box p {
+      color: #e0e0e0;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #0f1724;
+      text-align: center;
+      padding: 30px;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Me</a>
+    <a href="prestasi.html">Prestasi</a>
+    <a href="pemikiran.html">Pemikiran</a>
+  </nav>
+
+  <div class="container">
+    <h1>Tentang Gue</h1>
+    <div class="about-box">
+      <p>Halo! Nama gue [Nama Kamu], seorang [profesi / mahasiswa / pejuang mimpi] yang percaya kalau kerja keras dan konsistensi bisa ngebentuk takdir sendiri.</p>
+      <p>Gue suka ngulik, belajar hal baru, dan ngejar goal yang kadang keliatan mustahil — tapi justru di situ tantangannya.</p>
+      <p>Web ini adalah tempat gue naruh semua hal yang penting buat gue: prestasi yang gue banggain, pemikiran yang ingin gue bagikan, dan proses jadi versi terbaik dari diri sendiri.</p>
+      <p>Kayak Rimuru, gue pengen jadi seseorang yang bisa adaptif, tenang, tapi tetap OP di jalur gue sendiri.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Raim Tempest. Powered by secangkirkopi dan semangkok mie ayam.
+  </footer>
+
+</body>
+</html>
